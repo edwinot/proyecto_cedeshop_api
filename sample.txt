@@ -1,0 +1,31 @@
+app.get('/', (req,res) => {
+    res.send("hola api");
+})
+
+app.post('/', (req,res) => {
+    res.send("hola api POST");
+})
+
+
+// parametros por query
+app.get('/saludar', (req,res) => {
+    const nombre = req.query.nombre;
+    res.send(`hola  ${nombre}`);
+})
+
+//body (data)
+app.post('/sumar', (req,res) => {
+    const num1 = req.body.numero1;
+    const num2 = req.body.numero2;
+    const suma = num1 + num2;
+    res.send(`La suma es  ${suma}`);
+})
+
+app.post('/info/:idUsusario', (req,res) => {
+    const idUsusario = req.params.idUsusario;
+    res.send(`El usuario para mostrar info es  ${idUsusario}`);
+})
+
+app.listen(PORT, () => {
+    console.log( `Server running on port ${PORT}`)
+})
